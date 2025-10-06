@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 // Public Routes
@@ -15,5 +16,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Event APIs
     Route::apiResource('events', EventController::class);
+    
+    // Ticket APIs
+    Route::post('/events/{event}/tickets', [TicketController::class, 'store']);
+    Route::apiResource('tickets', TicketController::class)->only(['update', 'destroy']);
 
 });
