@@ -1,0 +1,587 @@
+type: collection.insomnia.rest/5.0
+name: Event Booking API
+meta:
+  id: wrk_9a7e70b726de443183702751369a90ef
+  created: 1751975595261
+  modified: 1759765901805
+  description: ""
+collection:
+  - name: Auth
+    meta:
+      id: fld_d947004424104425b17681efd16d8838
+      created: 1753783359986
+      modified: 1759486577734
+      sortKey: -1753783359986
+      description: ""
+    children:
+      - url: "{{ _.base_url }}/login"
+        name: Login
+        meta:
+          id: req_968d15ce3ef74942b703a69c0b2b5e8f
+          created: 1753783366184
+          modified: 1759764568679
+          isPrivate: false
+          description: ""
+          sortKey: -1753783366184
+        method: POST
+        body:
+          mimeType: application/x-www-form-urlencoded
+          params:
+            - id: pair_6d0a09e4261e4c17a5b2f0ed01c85ae7
+              name: email
+              value: customer@yourdomain.com
+              description: ""
+              disabled: false
+            - id: pair_e96908b196d5442e8c60ecae7219c44d
+              name: password
+              value: "00000000"
+              description: ""
+              disabled: false
+        headers:
+          - name: Content-Type
+            value: application/x-www-form-urlencoded
+          - name: User-Agent
+            value: insomnia/11.3.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/me"
+        name: me
+        meta:
+          id: req_8ce261a1a51e40d09f70c353bfa5533d
+          created: 1753783914534
+          modified: 1759756533763
+          isPrivate: false
+          description: ""
+          sortKey: -1753783366134
+        method: GET
+        body:
+          mimeType: application/json
+          text: ""
+        parameters:
+          - id: pair_0feddbafb79443da980420a9e2d9bd61
+            name: page
+            value: "2"
+            description: ""
+            disabled: true
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.3.0
+            id: pair_f14f2b33bfce4253b57b689789e374b8
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/register"
+        name: Register
+        meta:
+          id: req_0d821218fee148e5b2e47498d376dfc6
+          created: 1759756056018
+          modified: 1759764562143
+          isPrivate: false
+          description: ""
+          sortKey: -1753783366171.5
+        method: POST
+        body:
+          mimeType: application/x-www-form-urlencoded
+          params:
+            - id: pair_6d0a09e4261e4c17a5b2f0ed01c85ae7
+              name: email
+              value: customer@yourdomain.com
+              description: ""
+              disabled: false
+            - id: pair_e96908b196d5442e8c60ecae7219c44d
+              name: password
+              value: "00000000"
+              description: ""
+              disabled: false
+            - id: pair_9ae37438331546389e0de9c75e8a3ce5
+              name: name
+              value: customer
+              description: ""
+              disabled: false
+            - id: pair_dcbf2d1774334b978be8eb7b9193ca2c
+              name: password_confirmation
+              value: "00000000"
+              description: ""
+              disabled: false
+            - id: pair_44f9b4805ccf480991f24cca1e9adaa8
+              name: role
+              value: "3"
+              description: ""
+              disabled: false
+        headers:
+          - name: Content-Type
+            value: application/x-www-form-urlencoded
+          - name: User-Agent
+            value: insomnia/11.3.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Events
+    meta:
+      id: fld_c3792f40f96145e78370ba3079f23526
+      created: 1759754313201
+      modified: 1759754313201
+      sortKey: -1753783359886
+      description: ""
+    children:
+      - url: "{{ _.base_url }}/events"
+        name: Create
+        meta:
+          id: req_5ee41ed816ed41109e98fefe8059bcc7
+          created: 1759754313202
+          modified: 1759756940328
+          isPrivate: false
+          description: ""
+          sortKey: -1753783366184
+        method: POST
+        body:
+          mimeType: multipart/form-data
+          params:
+            - id: pair_b984d2dfc78c41cdac7967a7039d8b2f
+              name: title
+              value: "{% faker 'randomJobTitle' %}"
+              description: ""
+              disabled: false
+            - id: pair_f214d732cdd6407b93316e9d120394d9
+              name: description
+              value: "{% faker 'randomJobDescriptor' %}"
+              description: ""
+              disabled: false
+            - id: pair_780bcd3026ea4c928c6129ecbce9837e
+              name: date
+              value: "{% faker 'randomDateFuture' %}"
+              description: ""
+              disabled: false
+            - id: pair_c51a595399fb447f988a60340cdc9a52
+              name: location
+              value: "{% faker 'randomCity' %}"
+              description: ""
+              disabled: false
+        headers:
+          - name: Content-Type
+            value: multipart/form-data
+          - name: User-Agent
+            value: insomnia/11.3.0
+            id: pair_9d27fb6a83de411d99dd9ed5d5783647
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/events"
+        name: GET
+        meta:
+          id: req_a17e63c185ef4e54b1a92fcee2d62ac9
+          created: 1759754328317
+          modified: 1759763164653
+          isPrivate: false
+          description: ""
+          sortKey: -1753783366284
+        method: GET
+        body:
+          mimeType: application/x-www-form-urlencoded
+          params:
+            - id: pair_9fc61fde0ea54d0694758b81403790eb
+              name: ""
+              value: ""
+              description: ""
+              disabled: false
+        parameters:
+          - id: pair_a2e7d61679f04b80967184bf02d26f08
+            name: filter[title]
+            value: Porro
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+            id: pair_9d27fb6a83de411d99dd9ed5d5783647
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/events/6"
+        name: Update
+        meta:
+          id: req_87d6ddc3e67b4b98957f049d9c137719
+          created: 1759756962657
+          modified: 1759763467418
+          isPrivate: false
+          description: ""
+          sortKey: -1753783366177.75
+        method: PUT
+        body:
+          mimeType: application/x-www-form-urlencoded
+          params:
+            - id: pair_b984d2dfc78c41cdac7967a7039d8b2f
+              name: title
+              value: "{% faker 'randomJobTitle' %}"
+              description: ""
+              disabled: false
+            - id: pair_f214d732cdd6407b93316e9d120394d9
+              name: description
+              value: "{% faker 'randomJobDescriptor' %}"
+              description: ""
+              disabled: false
+            - id: pair_780bcd3026ea4c928c6129ecbce9837e
+              name: date
+              value: "{% faker 'randomDateFuture' %}"
+              description: ""
+              disabled: false
+            - id: pair_c51a595399fb447f988a60340cdc9a52
+              name: location
+              value: "{% faker 'randomCity' %}"
+              description: ""
+              disabled: false
+        headers:
+          - name: Content-Type
+            value: application/x-www-form-urlencoded
+          - name: User-Agent
+            value: insomnia/11.3.0
+            id: pair_9d27fb6a83de411d99dd9ed5d5783647
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/events/6"
+        name: Delete
+        meta:
+          id: req_f44d8e7df2bb42949994a3f1f8fe9173
+          created: 1759756999433
+          modified: 1759763474361
+          isPrivate: false
+          description: ""
+          sortKey: -1753783366077.75
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+            id: pair_9d27fb6a83de411d99dd9ed5d5783647
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/events/4"
+        name: GET Single
+        meta:
+          id: req_9fc484c618bb4bbeaddeeb4dadefdc31
+          created: 1759763197263
+          modified: 1759763226153
+          isPrivate: false
+          description: ""
+          sortKey: -1753783366234
+        method: GET
+        body:
+          mimeType: application/x-www-form-urlencoded
+          params:
+            - id: pair_9fc61fde0ea54d0694758b81403790eb
+              name: ""
+              value: ""
+              description: ""
+              disabled: false
+        parameters:
+          - id: pair_a2e7d61679f04b80967184bf02d26f08
+            name: filter[title]
+            value: Porro
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+            id: pair_9d27fb6a83de411d99dd9ed5d5783647
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Tickets
+    meta:
+      id: fld_5137023e88c940df863f6c00d7728fbf
+      created: 1759763506032
+      modified: 1759763506032
+      sortKey: -1759763506032
+      description: ""
+    children:
+      - url: "{{ _.base_url }}/events/7/tickets"
+        name: Create
+        meta:
+          id: req_8927888ec3fc4dd68f35eb811635b7c0
+          created: 1759763520539
+          modified: 1759763670623
+          isPrivate: false
+          description: ""
+          sortKey: -1759763520539
+        method: POST
+        parameters:
+          - id: pair_77381c5274d048b9bf0e858dd046101f
+            name: type
+            value: "1"
+            description: ""
+            disabled: false
+          - id: pair_c16f8cb1d93d472e870bed1fdd842292
+            name: price
+            value: "20"
+            description: ""
+            disabled: false
+          - id: pair_74bef929ece04a11be800921c91f4f48
+            name: quantity
+            value: "100"
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/tickets/16"
+        name: Update
+        meta:
+          id: req_cf0d82f1f46b47a2a216fa8c68787fc4
+          created: 1759763766344
+          modified: 1759763795578
+          isPrivate: false
+          description: ""
+          sortKey: -1756773443411.5
+        method: PUT
+        parameters:
+          - id: pair_77381c5274d048b9bf0e858dd046101f
+            name: type
+            value: "1"
+            description: ""
+            disabled: false
+          - id: pair_c16f8cb1d93d472e870bed1fdd842292
+            name: price
+            value: "20"
+            description: ""
+            disabled: false
+          - id: pair_74bef929ece04a11be800921c91f4f48
+            name: quantity
+            value: "200"
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/tickets/16"
+        name: Delete
+        meta:
+          id: req_6580e772fe784b81b01de1731548afd4
+          created: 1759763831386
+          modified: 1759763848580
+          isPrivate: false
+          description: ""
+          sortKey: -1759763831386
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Booking
+    meta:
+      id: fld_ca45f992d10749ed9de2cfa9c698408a
+      created: 1759763885019
+      modified: 1759763899452
+      sortKey: -1759763885019
+      description: ""
+    children:
+      - url: "{{ _.base_url }}/tickets/17/bookings"
+        name: Create
+        meta:
+          id: req_c8cd279557774afb82db2b2bf0d961c8
+          created: 1759763897406
+          modified: 1759765159448
+          isPrivate: false
+          description: ""
+          sortKey: -1759763897406
+        method: POST
+        body:
+          mimeType: multipart/form-data
+          params:
+            - id: pair_f70bc366b5554519877763eae89147fc
+              name: quantity
+              value: "10"
+              description: ""
+              disabled: false
+        headers:
+          - name: Content-Type
+            value: multipart/form-data
+          - name: User-Agent
+            value: insomnia/11.3.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/bookings"
+        name: Get
+        meta:
+          id: req_aa7760bc4724414881c0e644a77844cf
+          created: 1759764685972
+          modified: 1759764700141
+          isPrivate: false
+          description: ""
+          sortKey: -1759763864396
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/bookings/23/cancel"
+        name: Cancel
+        meta:
+          id: req_4d2bb0da85ef429da9be6e0b5f36e770
+          created: 1759764840263
+          modified: 1759765169959
+          isPrivate: false
+          description: ""
+          sortKey: -1759763847891
+        method: PUT
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Payment
+    meta:
+      id: fld_940d06109b1b43cd918a4e4939a218f6
+      created: 1759765217242
+      modified: 1759765217242
+      sortKey: -1759765217243
+      description: ""
+    children:
+      - url: "{{ _.base_url }}/bookings/24/payment"
+        name: Create
+        meta:
+          id: req_1e4dc692a6c343659c6336101e6e0f04
+          created: 1759765230125
+          modified: 1759765282972
+          isPrivate: false
+          description: ""
+          sortKey: -1759765230125
+        method: POST
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/payments/21"
+        name: Get
+        meta:
+          id: req_f83f2ef35e6848c59f4a49e932745894
+          created: 1759765353139
+          modified: 1759765376253
+          isPrivate: false
+          description: ""
+          sortKey: -1759764563765.5
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.3.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_b624f863848e0d080833aa1526a4b19e8417590d
+    created: 1753783199020
+    modified: 1753783199020
+environments:
+  name: Base Environment
+  meta:
+    id: env_b624f863848e0d080833aa1526a4b19e8417590d
+    created: 1751975595271
+    modified: 1759756807894
+    isPrivate: false
+  data:
+    base_url: http://127.0.0.1:8000/api
+    GLOBAL_HEADERS:
+      Accept: application/json
+      Authorization: Bearer {% response 'body',
+        'req_968d15ce3ef74942b703a69c0b2b5e8f', 'b64::JC50b2tlbg==::46b',
+        'never', 60 %}
+      Content-Type: application/json
