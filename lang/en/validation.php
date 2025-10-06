@@ -178,8 +178,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'ticket' => [
+            'already_booked' => 'You have already booked this ticket.',
         ],
     ],
 

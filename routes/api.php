@@ -5,6 +5,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TicketController;
+use App\Http\Middleware\PreventDoubleBooking;
 use Illuminate\Support\Facades\Route;
 
 // Public Routes
@@ -29,6 +30,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/bookings/{booking}/cancel', [BookingController::class, 'cancel']);
 
     // Payment APIs
-    Route::post('/bookings/{booking}/payment', [PaymentController::class, 'create']);
-    Route::get('/payments/{payment}', [PaymentController::class, 'show']); 
+    Route::post('/bookings/{booking}/payment', [PaymentController::class, 'create'])->middleware(PreventDoubleBooking::class);
+    Route::get('/payments/{payment}', [PaymentController::class, 'show']);
 });
