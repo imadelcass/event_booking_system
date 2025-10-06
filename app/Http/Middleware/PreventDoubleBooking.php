@@ -18,7 +18,8 @@ class PreventDoubleBooking
     {
         $ticketId = $request->input('ticket_id');
 
-        $alreadyBooked = Booking::where('ticket_id', $ticketId)
+        $alreadyBooked = Booking::where('user_id', auth()->id())
+            ->where('ticket_id', $ticketId)
             ->whereIn('status', ['pending', 'confirmed'])
             ->exists();
 
@@ -27,7 +28,7 @@ class PreventDoubleBooking
                 'error' => __('validation.custom.ticket.already_booked')
             ], 403);
         }
-        
+
         return $next($request);
     }
 }
