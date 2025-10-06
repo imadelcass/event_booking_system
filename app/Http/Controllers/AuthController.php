@@ -32,12 +32,17 @@ class AuthController extends Controller
     public function register(RegisterRequest $request)
     {
         DB::beginTransaction();
-        
+
         $user = User::create($request->validated());
         $token = $user->createToken('auth')->plainTextToken;
 
         DB::commit();
 
         return response()->json(['token' => $token]);
+    }
+
+    public function me()
+    {
+        return response()->json(auth()->user());
     }
 }
