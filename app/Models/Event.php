@@ -18,6 +18,18 @@ class Event extends Model
         'created_by',
     ];
 
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'date' => 'date',
+        ];
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'created_by');

@@ -20,7 +20,7 @@ class BookingController extends Controller
     {
         Gate::authorize('viewAny', Booking::class);
 
-        return QueryBuilder::for(Gate::class)
+        return QueryBuilder::for(Booking::class)
             ->where('user_id', auth()->id())
             ->paginate(...__paginate($request));
 

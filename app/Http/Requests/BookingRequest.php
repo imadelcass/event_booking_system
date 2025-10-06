@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\BookingStatusEnum;
 use Illuminate\Foundation\Http\FormRequest;
 
 class BookingRequest extends FormRequest
@@ -21,8 +22,12 @@ class BookingRequest extends FormRequest
      */
     public function rules(): array
     {
+        // Calculate available tickets
+        $ticketBookings = $this->ticket->bookings()->whereNot('status', BookingStatusEnum::CANCELLED)->sum('quantity');
+        $availableQuantity = $this->ticket->quantity - $ticketBookings;
+
         return [
-            'quantity' => ['required', 'integer', 'min:1'],
+            'quantity' => ['required', 'integer', 'min:1', 'max:' . $availableQuantity],
         ];
     }
 }

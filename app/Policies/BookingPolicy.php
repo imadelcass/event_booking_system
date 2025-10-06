@@ -46,6 +46,7 @@ class BookingPolicy
      */
     public function cancel(User $user, Booking $booking): bool
     {
+
         return $user->isCustomer()
             && $booking->user_id === $user->id
             && $booking->status !== BookingStatusEnum::CANCELLED->value;

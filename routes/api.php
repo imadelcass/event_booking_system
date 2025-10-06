@@ -25,11 +25,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('tickets', TicketController::class)->only(['update', 'destroy']);
 
     // Booking APIs
-    Route::post('/tickets/{ticket}/bookings', [BookingController::class, 'store']);
+    Route::post('/tickets/{ticket}/bookings', [BookingController::class, 'store'])->middleware(PreventDoubleBooking::class);
     Route::get('/bookings', [BookingController::class, 'index']);
     Route::put('/bookings/{booking}/cancel', [BookingController::class, 'cancel']);
 
     // Payment APIs
-    Route::post('/bookings/{booking}/payment', [PaymentController::class, 'create'])->middleware(PreventDoubleBooking::class);
+    Route::post('/bookings/{booking}/payment', [PaymentController::class, 'store']);
     Route::get('/payments/{payment}', [PaymentController::class, 'show']);
 });

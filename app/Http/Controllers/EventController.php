@@ -17,8 +17,8 @@ class EventController extends Controller
     public function index(Request $request)
     {
         return QueryBuilder::for(Event::class)
-            ->allowedFilters(['name', 'date', 'location'])
-            ->allowedSorts(['name', 'date', 'created_at'])
+            ->allowedFilters(['title', 'date', 'location'])
+            ->allowedSorts(['title', 'date', 'created_at'])
             ->paginate(...__paginate($request));
     }
 

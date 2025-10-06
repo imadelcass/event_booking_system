@@ -2,7 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\Enums\BookingStatusEnum;
 use App\Models\Booking;
+use App\Models\Ticket;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,11 +18,10 @@ class PreventDoubleBooking
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $ticketId = $request->input('ticket_id');
 
         $alreadyBooked = Booking::where('user_id', auth()->id())
-            ->where('ticket_id', $ticketId)
-            ->whereIn('status', ['pending', 'confirmed'])
+            ->where('ticket_id', $request->ticket->id)
+            ->whereNot('status', BookingStatusEnum::CANCELLED)
             ->exists();
 
         if ($alreadyBooked) {
