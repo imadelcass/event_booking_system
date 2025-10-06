@@ -14,7 +14,7 @@ It includes authentication, role-based access (Admin, Organizer, Customer), book
 - 🧰 **Factories & Seeders** for testing data.
 - 🧩 **Service Class** for simulated payments.
 - 🔍 **Filtering & Sorting** with [Spatie Laravel Query Builder](https://spatie.be/docs/laravel-query-builder/v6).
-- 🧪 **Insomnia API Collection** included for easy endpoint testing
+- 🧪 **Insomnia API Collection** included for easy endpoint testing `insomnia_collection.yaml`.
 - 📦 Built with Laravel best practices.
 
 ---
