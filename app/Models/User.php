@@ -75,4 +75,9 @@ class User extends Authenticatable
     {
         return $this->role === RolesEnum::ORGANIZER->value;
     }
+
+    public function isCustomer(): bool
+    {
+        return $this->role === RolesEnum::CUSTOMER->value;
+    }
 }
