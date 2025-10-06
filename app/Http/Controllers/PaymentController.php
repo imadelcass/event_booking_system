@@ -2,25 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\PaymentStatusEnum;
 use App\Models\Payment;
-use App\Http\Requests\PaymentRequest;
 use App\Models\Booking;
+use App\Services\PaymentService;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Gate;
 
 class PaymentController extends Controller
 {
+    public function __construct(public PaymentService $paymentService) {}
+
     /**
      * Store a newly created resource in storage.
      */
-    public function store(PaymentRequest $request, Booking $booking)
+    public function store(Booking $booking)
     {
         Gate::authorize('create', Payment::class);
 
-        $data = $request->validated() +
-            ['booking_id' => $booking->id, 'status' => PaymentStatusEnum::SUCCESS->value];
-        $payment = Payment::create($data);
+        $payment = $this->paymentService->processPayment($booking);
 
         return response()->json($payment, Response::HTTP_CREATED);
     }
