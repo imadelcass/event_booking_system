@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +27,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/tickets/{ticket}/bookings', [BookingController::class, 'store']);
     Route::get('/bookings', [BookingController::class, 'index']);
     Route::put('/bookings/{booking}/cancel', [BookingController::class, 'cancel']);
+
+    // Payment APIs
+    Route::post('/bookings/{booking}/payment', [PaymentController::class, 'create']);
+    Route::get('/payments/{payment}', [PaymentController::class, 'show']); 
 });
