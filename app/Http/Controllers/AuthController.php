@@ -33,12 +33,11 @@ class AuthController extends Controller
     {
         DB::beginTransaction();
 
-        $user = User::create($request->validated());
-        $token = $user->createToken('auth')->plainTextToken;
+        User::create($request->validated());
 
         DB::commit();
 
-        return response()->json(['token' => $token]);
+        return response()->noContent(Response::HTTP_CREATED);
     }
 
     public function me()
